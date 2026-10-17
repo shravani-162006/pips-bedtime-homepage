@@ -2302,10 +2302,478 @@ select:focus-visible,
 }
 
 /* ==========================================================================
+   UNIQUE FEATURE 1: DREAM ALCHEMY LAB (PROCEDURAL DREAM BLENDER)
+   ========================================================================== */
+
+.alchemy-titlebar {
+  background: linear-gradient(90deg, #7c3aed 0%, #db2777 100%);
+}
+
+.alchemy-intro {
+  margin-bottom: 16px;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.15);
+  padding-bottom: 8px;
+}
+
+.alchemy-intro h3 {
+  font-family: var(--font-heading);
+  color: var(--accent-gold);
+  font-size: 1.4rem;
+}
+
+.alchemy-workbench-grid {
+  display: grid;
+  grid-template-columns: 280px 220px 1fr;
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 20px;
+}
+
+.panel-sub-label {
+  font-family: var(--font-retro);
+  font-size: 0.72rem;
+  color: var(--accent-lavender);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.ingredients-selector-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ingredient-card-btn {
+  background: #191f42;
+  border: 2px solid #373f73;
+  color: #fff;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  text-align: left;
+}
+
+.ingredient-card-btn:hover {
+  background: #252e61;
+}
+
+.ingredient-icon {
+  font-size: 1.3rem;
+}
+
+.ingredient-meta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ingredient-name {
+  font-family: var(--font-heading);
+  font-size: 0.88rem;
+  color: var(--text-main);
+}
+
+.ingredient-trait {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.ingredient-check {
+  font-family: var(--font-retro);
+  color: var(--accent-gold);
+  font-weight: bold;
+}
+
+.flask-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  background: #11142e;
+  border: 2px solid #353d70;
+  padding: 16px 12px;
+  border-radius: 6px;
+}
+
+.alchemy-flask-wrapper {
+  width: 140px;
+  height: 200px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alchemy-flask-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.brewing-agitation {
+  animation: flaskShake 0.4s infinite ease-in-out;
+}
+
+@keyframes flaskShake {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(-4deg) scale(1.05); }
+  75% { transform: rotate(4deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.bubble-1 { animation: bubbleUp 0.8s infinite ease-in; }
+.bubble-2 { animation: bubbleUp 1s infinite ease-in 0.2s; }
+.bubble-3 { animation: bubbleUp 0.7s infinite ease-in 0.4s; }
+
+@keyframes bubbleUp {
+  0% { transform: translateY(0); opacity: 0.8; }
+  100% { transform: translateY(-40px); opacity: 0; }
+}
+
+.flask-ingredient-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.empty-flask-note {
+  font-family: var(--font-retro);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.mini-tag-pill {
+  font-family: var(--font-retro);
+  font-size: 0.62rem;
+  background: #1f2754;
+  border: 1px solid;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.brew-action-btn {
+  background: #7c3aed;
+  border-color: #a78bfa #4c1d95 #4c1d95 #a78bfa;
+  width: 100%;
+}
+
+.brew-action-btn:hover {
+  background: #8b5cf6;
+}
+
+.brewing-pulse {
+  animation: pulseButton 0.6s infinite alternate;
+}
+
+.brewed-dream-card {
+  background: #171d3e;
+  border: 2px solid;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.brewed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-retro);
+  font-size: 0.72rem;
+}
+
+.brewed-cat {
+  background: rgba(255, 209, 102, 0.15);
+  color: var(--accent-gold);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+.brewed-potency {
+  color: var(--accent-pink);
+}
+
+.brewed-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--accent-cream);
+  line-height: 1.25;
+}
+
+.brewed-icons {
+  font-size: 1.4rem;
+  letter-spacing: 4px;
+}
+
+.brewed-story {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  background: rgba(0,0,0,0.25);
+  padding: 10px;
+  border-left: 3px solid var(--accent-gold);
+}
+
+.brewed-seal {
+  font-family: var(--font-retro);
+  font-size: 0.7rem;
+  color: var(--accent-lavender);
+}
+
+.save-dream-btn {
+  background: #e06b94;
+  border-color: #ff9cbd #7d2645 #7d2645 #ff9cbd;
+  align-self: flex-start;
+}
+
+.brewed-placeholder {
+  background: #141836;
+  border: 2px dashed #3a4478;
+  padding: 30px 16px;
+  text-align: center;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.ph-icon {
+  font-size: 2.5rem;
+}
+
+.saved-bedside-drawer {
+  background: #131733;
+  border: 2px solid #2e3661;
+  padding: 12px 16px;
+  margin-top: 12px;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-retro);
+  font-size: 0.74rem;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+}
+
+.saved-dreams-deck {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.mini-bottle-item {
+  background: #1c2246;
+  border: 1.5px solid #434e87;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mini-bottle-item:hover {
+  border-color: var(--accent-gold);
+  background: #252d5c;
+}
+
+.bottle-art {
+  font-size: 1.2rem;
+}
+
+.bottle-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.bottle-title {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  color: var(--text-main);
+}
+
+.bottle-cat {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   UNIQUE FEATURE 2: ANTI-SILENCE AMBIENT SLEEP MACHINE
+   ========================================================================== */
+
+.anti-silence-titlebar {
+  background: linear-gradient(90deg, #059669 0%, #0d9488 100%);
+}
+
+.anti-silence-intro {
+  margin-bottom: 16px;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.15);
+  padding-bottom: 8px;
+}
+
+.pip-warning-pill {
+  font-family: var(--font-retro);
+  font-size: 0.75rem;
+  color: var(--accent-gold);
+  background: rgba(255, 209, 102, 0.15);
+  padding: 4px 10px;
+  border-left: 3px solid var(--accent-gold);
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.sound-machine-dashboard {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 20px;
+  background: #121633;
+  border: 3px solid;
+  border-color: #0b0e24 #3e487d #3e487d #0b0e24;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.power-spectrum-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.sound-machine-power-btn {
+  background: #28305c;
+  color: #fff;
+  border: 3px solid;
+  border-color: #5d6aa8 #11142e #11142e #5d6aa8;
+  font-family: var(--font-retro);
+  font-size: 0.85rem;
+  padding: 12px 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+.sound-machine-power-btn.power-active {
+  background: #059669;
+  border-color: #34d399 #064e3b #064e3b #34d399;
+  box-shadow: 0 0 14px rgba(52, 211, 153, 0.4);
+}
+
+.sound-waves-stage {
+  width: 100%;
+  height: 60px;
+  background: #0a0c1e;
+  border: 2px solid #282f57;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding: 6px 10px;
+}
+
+.wave-line {
+  flex: 1;
+  background: linear-gradient(180deg, #34d399, #0d9488);
+  border-radius: 2px 2px 0 0;
+}
+
+@keyframes wavePulse {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1.2); }
+}
+
+.muted-warning-badge {
+  font-family: var(--font-retro);
+  font-size: 0.65rem;
+  color: var(--accent-pink);
+  text-align: center;
+}
+
+.channels-mix-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+
+.sound-channel-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.channel-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-retro);
+  font-size: 0.74rem;
+}
+
+.channel-icon {
+  font-size: 1.1rem;
+}
+
+.channel-name {
+  color: var(--accent-lavender);
+}
+
+.channel-val {
+  color: var(--accent-gold);
+  margin-left: auto;
+}
+
+.channel-slider {
+  width: 100%;
+}
+
+.sound-presets-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  background: #171d3e;
+  border: 2px solid #373f73;
+  padding: 10px 14px;
+}
+
+.presets-label {
+  font-family: var(--font-retro);
+  font-size: 0.72rem;
+  color: var(--accent-gold);
+}
+
+.preset-btn {
+  font-size: 0.78rem;
+  padding: 6px 10px;
+}
+
+/* ==========================================================================
    MOBILE RESPONSIVENESS & MEDIA QUERIES (Down to 360px)
    ========================================================================== */
 
 @media (max-width: 860px) {
+  .alchemy-workbench-grid {
+    grid-template-columns: 1fr;
+  }
+  .sound-machine-dashboard {
+    grid-template-columns: 1fr;
+  }
   .hero-grid {
     grid-template-columns: 1fr;
     justify-items: center;

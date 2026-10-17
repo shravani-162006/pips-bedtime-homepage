@@ -13,6 +13,8 @@ import SparkleTrail from './components/SparkleTrail';
 import SecretMoonEasterEgg from './components/SecretMoonEasterEgg';
 import SecretModal from './components/SecretModal';
 import RetroWebring from './components/RetroWebring';
+import DreamAlchemyLab from './components/DreamAlchemyLab';
+import AntiSilenceMachine from './components/AntiSilenceMachine';
 import { soundFx } from './utils/audio';
 
 export default function App() {
@@ -89,6 +91,12 @@ export default function App() {
           </button>
           <button className="taskbar-item-btn" onClick={() => scrollToSection('projects-deck')}>
             🛠️ Inventions
+          </button>
+          <button className="taskbar-item-btn" onClick={() => scrollToSection('alchemy-lab')}>
+            🧪 Dream Alchemy
+          </button>
+          <button className="taskbar-item-btn" onClick={() => scrollToSection('anti-silence')}>
+            📻 Sleep Sounds
           </button>
           <button className="taskbar-item-btn" onClick={() => scrollToSection('story-chronicle')}>
             📖 Bedtime Story
@@ -198,10 +206,16 @@ export default function App() {
                     🛠️ Test My Inventions
                   </button>
                   <button
-                    className="retro-btn hero-secondary-btn"
-                    onClick={() => scrollToSection('story-chronicle')}
+                    className="retro-btn hero-tertiary-btn"
+                    onClick={() => scrollToSection('alchemy-lab')}
                   >
-                    📖 Read My Story
+                    🧪 Mix a Custom Dream
+                  </button>
+                  <button
+                    className="retro-btn hero-secondary-btn"
+                    onClick={() => scrollToSection('anti-silence')}
+                  >
+                    📻 Anti-Silence Sounds
                   </button>
                   <button
                     className="retro-btn hero-tertiary-btn"
@@ -344,6 +358,34 @@ export default function App() {
               <span>PATENT: Midnight Nursery Laboratory</span>
             </div>
           </div>
+        </section>
+
+        {/* SECTION 2B (UNIQUE FEATURE): Pip's Dream Alchemy Lab */}
+        <section id="alchemy-lab" className="page-section section-alchemy-lab" aria-labelledby="alchemy-title">
+          <div className="section-header-box">
+            <span className="section-num-tag">[INTERACTIVE WORKSHOP]</span>
+            <h2 id="alchemy-title" className="section-title">Pip's Dream Alchemy Lab</h2>
+            <p className="section-subtitle">Mix starlight ingredients from the nursery pantry to brew custom dreams</p>
+          </div>
+
+          <DreamAlchemyLab />
+        </section>
+
+        {/* SECTION 2C (UNIQUE FEATURE): Pip's Anti-Silence Ambient Sleep Machine */}
+        <section id="anti-silence" className="page-section section-anti-silence" aria-labelledby="anti-silence-title">
+          <div className="section-header-box">
+            <span className="section-num-tag">[CANON QUIRK PROTOCOL]</span>
+            <h2 id="anti-silence-title" className="section-title">Pip's Anti-Silence Ambient Sleep Synthesizer</h2>
+            <p className="section-subtitle">Pip hates silence! Generate soothing rainfall, starlight hums, and lavender winds</p>
+          </div>
+
+          <AntiSilenceMachine
+            isMuted={isMuted}
+            onUnmuteRequest={() => {
+              const nextMuted = soundFx.setMuted(false);
+              setIsMuted(nextMuted);
+            }}
+          />
         </section>
 
         {/* SECTION 3: Story (5 Scroll-Triggered Scenes) */}

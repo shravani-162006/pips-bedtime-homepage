@@ -196,16 +196,153 @@ class AudioManager {
     osc.stop(now + 0.04);
   }
 
-  // Easter egg fanfare / secret melody
-  playSecretFanfare() {
+  // Magical dream potion brewing sound
+  playBrewingSound() {
     if (this.isMuted) return;
-    const notes = ['C5', 'E5', 'G5', 'A5', 'C6'];
-    notes.forEach((note, index) => {
-      setTimeout(() => {
-        this.playChime(note, 'musicBox', 1.5);
-      }, index * 120);
+    this.init();
+    if (!this.ctx) return;
+
+    const now = this.ctx.currentTime;
+    // Series of 5 rapid bubbling bell pops
+    const pops = [350, 480, 620, 780, 950];
+    pops.forEach((f, idx) => {
+      const t = now + idx * 0.12;
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(f, t);
+      osc.frequency.exponentialRampToValueAtTime(f * 1.4, t + 0.08);
+
+      gain.gain.setValueAtTime(0.2, t);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+
+      osc.connect(gain);
+      gain.connect(this.masterGain);
+
+      osc.start(t);
+      osc.stop(t + 0.14);
     });
+
+    // Followed by a sparkling chime chord
+    setTimeout(() => {
+      this.playChime('C5', 'glass', 1.2);
+      setTimeout(() => this.playChime('G5', 'glass', 1.4), 100);
+      setTimeout(() => this.playChime('C6', 'musicBox', 1.8), 200);
+    }, 600);
+  }
+
+  // --- AMBIENT ANTI-SILENCE SLEEP GENERATOR ---
+  // Pip hates silence, so he built soothing ambient sound loops
+  initAmbient() {
+    if (!this.ambientNodes) {
+      this.ambientNodes = {
+        rain: null,
+        wind: null,
+        drone: null,
+        gains: {}
+      };
+    }
+  }
+
+  setAmbient(type, volume = 0.5) {
+    this.init();
+    this.initAmbient();
+    if (!this.ctx) return;
+
+    if (volume <= 0) {
+      this.stopAmbient(type);
+      return;
+    }
+
+    if (type === 'drone') {
+      if (!this.ambientNodes.drone) {
+        // Celestial 432 Hz + 216 Hz warm sleep drone
+        const osc1 = this.ctx.createOscillator();
+        const osc2 = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc1.type = 'sine';
+        osc1.frequency.value = 432;
+        osc2.type = 'triangle';
+        osc2.frequency.value = 216;
+
+        gain.gain.value = volume * 0.15;
+
+        osc1.connect(gain);
+        osc2.connect(gain);
+        gain.connect(this.masterGain);
+
+        osc1.start();
+        osc2.start();
+
+        this.ambientNodes.drone = { osc1, osc2, gain };
+      } else {
+        this.ambientNodes.drone.gain.gain.setValueAtTime(volume * 0.15, this.ctx.currentTime);
+      }
+    } else if (type === 'rain' || type === 'wind') {
+      if (!this.ambientNodes[type]) {
+        // Generate continuous pink/filtered noise for rain & gentle wind
+        const bufferSize = this.ctx.sampleRate * 2;
+        const noiseBuffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+        const output = noiseBuffer.getChannelData(0);
+        let b0 = 0, b1 = 0, b2 = 0;
+        for (let i = 0; i < bufferSize; i++) {
+          const white = Math.random() * 2 - 1;
+          b0 = 0.99886 * b0 + white * 0.0555179;
+          b1 = 0.99332 * b1 + white * 0.0750759;
+          b2 = 0.96900 * b2 + white * 0.1538520;
+          output[i] = (b0 + b1 + b2) * 0.11;
+        }
+
+        const whiteNoise = this.ctx.createBufferSource();
+        whiteNoise.buffer = noiseBuffer;
+        whiteNoise.loop = true;
+
+        const filter = this.ctx.createBiquadFilter();
+        const gain = this.ctx.createGain();
+
+        if (type === 'rain') {
+          filter.type = 'lowpass';
+          filter.frequency.value = 850;
+          gain.gain.value = volume * 0.25;
+        } else {
+          filter.type = 'bandpass';
+          filter.frequency.value = 320;
+          filter.Q.value = 1.2;
+          gain.gain.value = volume * 0.35;
+        }
+
+        whiteNoise.connect(filter);
+        filter.connect(gain);
+        gain.connect(this.masterGain);
+
+        whiteNoise.start();
+        this.ambientNodes[type] = { source: whiteNoise, filter, gain };
+      } else {
+        this.ambientNodes[type].gain.gain.setValueAtTime(
+          volume * (type === 'rain' ? 0.25 : 0.35),
+          this.ctx.currentTime
+        );
+      }
+    }
+  }
+
+  stopAmbient(type) {
+    if (this.ambientNodes && this.ambientNodes[type]) {
+      try {
+        if (this.ambientNodes[type].source) this.ambientNodes[type].source.stop();
+        if (this.ambientNodes[type].osc1) this.ambientNodes[type].osc1.stop();
+        if (this.ambientNodes[type].osc2) this.ambientNodes[type].osc2.stop();
+      } catch {}
+      this.ambientNodes[type] = null;
+    }
+  }
+
+  stopAllAmbient() {
+    ['rain', 'wind', 'drone'].forEach((t) => this.stopAmbient(t));
   }
 }
 
 export const soundFx = new AudioManager();
+

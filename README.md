@@ -77,7 +77,7 @@ To submit your project for the hackathon, push this repository to your public Gi
 # (Do NOT initialize with a README, .gitignore, or license)
 
 # 2. Add your GitHub remote URL
-git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/pips-bedtime-homepage.git
+git remote add origin https://github.com/shravani-162006/pips-bedtime-homepage.git
 
 # 3. Rename branch to main
 git branch -M main

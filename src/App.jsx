@@ -15,6 +15,8 @@ import SecretModal from './components/SecretModal';
 import RetroWebring from './components/RetroWebring';
 import DreamAlchemyLab from './components/DreamAlchemyLab';
 import AntiSilenceMachine from './components/AntiSilenceMachine';
+import TuckPipInBed from './components/TuckPipInBed';
+import GoldenDreamTicket from './components/GoldenDreamTicket';
 import { soundFx } from './utils/audio';
 
 export default function App() {
@@ -97,6 +99,12 @@ export default function App() {
           </button>
           <button className="taskbar-item-btn" onClick={() => scrollToSection('anti-silence')}>
             📻 Sleep Sounds
+          </button>
+          <button className="taskbar-item-btn highlight-taskbar-btn" onClick={() => scrollToSection('tuck-pip')}>
+            🛌 Tuck Pip In
+          </button>
+          <button className="taskbar-item-btn highlight-taskbar-btn" onClick={() => scrollToSection('dream-ticket')}>
+            🎟️ Golden Ticket
           </button>
           <button className="taskbar-item-btn" onClick={() => scrollToSection('story-chronicle')}>
             📖 Bedtime Story
@@ -213,9 +221,15 @@ export default function App() {
                   </button>
                   <button
                     className="retro-btn hero-secondary-btn"
-                    onClick={() => scrollToSection('anti-silence')}
+                    onClick={() => scrollToSection('tuck-pip')}
                   >
-                    📻 Anti-Silence Sounds
+                    🛌 Tuck Pip In
+                  </button>
+                  <button
+                    className="retro-btn hero-gold-btn"
+                    onClick={() => scrollToSection('dream-ticket')}
+                  >
+                    🎟️ Get Bedtime Ticket
                   </button>
                   <button
                     className="retro-btn hero-tertiary-btn"
@@ -386,6 +400,35 @@ export default function App() {
               setIsMuted(nextMuted);
             }}
           />
+        </section>
+
+        {/* SECTION 2D (HACKATHON WINNER FEATURE 1): Tuck Pip In / Virtual Bedtime Care */}
+        <section id="tuck-pip" className="page-section section-tuck-pip" aria-labelledby="tuck-title">
+          <div className="section-header-box">
+            <span className="section-num-tag">[VIRTUAL BEDTIME CARE]</span>
+            <h2 id="tuck-title" className="section-title">Pip's Star Hammock: Tuck Pip Into Bed</h2>
+            <p className="section-subtitle">Feed warm cocoa, give Barnaby the Bear, pull the starry blanket, and play sweet lullabies</p>
+          </div>
+
+          <TuckPipInBed
+            isMuted={isMuted}
+            onUnmuteRequest={() => {
+              const nextMuted = soundFx.setMuted(false);
+              setIsMuted(nextMuted);
+            }}
+            onNavigateToTicket={() => scrollToSection('dream-ticket')}
+          />
+        </section>
+
+        {/* SECTION 2E (HACKATHON WINNER FEATURE 2): Official Golden Dream Ticket Generator */}
+        <section id="dream-ticket" className="page-section section-dream-ticket" aria-labelledby="ticket-section-title">
+          <div className="section-header-box">
+            <span className="section-num-tag">[OFFICIAL PASSPORT OFFICE]</span>
+            <h2 id="ticket-section-title" className="section-title">Official Golden Bedtime Ticket Office</h2>
+            <p className="section-subtitle">Generate and download your high-resolution 2x souvenir boarding pass for tonight's dream flight</p>
+          </div>
+
+          <GoldenDreamTicket />
         </section>
 
         {/* SECTION 3: Story (5 Scroll-Triggered Scenes) */}

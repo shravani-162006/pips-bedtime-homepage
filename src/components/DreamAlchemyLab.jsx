@@ -259,6 +259,19 @@ export default function DreamAlchemyLab() {
                 >
                   📥 Bottle & Save to Bedside
                 </button>
+
+                <button
+                  type="button"
+                  className="retro-btn claim-ticket-action-btn"
+                  onClick={() => {
+                    soundFx.playClick();
+                    const el = document.getElementById('dream-ticket');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  style={{ marginTop: '8px', background: '#d97706', color: '#fff', width: '100%', fontWeight: 'bold' }}
+                >
+                  🎟️ Issue Golden Ticket for This Dream →
+                </button>
               </div>
             ) : (
               <div className="brewed-placeholder">

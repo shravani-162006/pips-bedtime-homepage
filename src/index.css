@@ -2848,3 +2848,874 @@ select:focus-visible,
     transform: none;
   }
 }
+/* ========================================================
+   HACKATHON WINNER MODULES: TUCK PIP IN & GOLDEN DREAM TICKET
+   ======================================================== */
+
+.highlight-taskbar-btn {
+  background: #392868 !important;
+  color: #ffd875 !important;
+  border-color: #f5c542 !important;
+  box-shadow: 0 0 6px rgba(245, 197, 66, 0.4) !important;
+  font-weight: bold;
+}
+
+.hero-gold-btn {
+  background: #d49a15 !important;
+  color: #1a0f00 !important;
+  border-color: #fff #875e07 #875e07 #fff !important;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(245, 197, 66, 0.4);
+}
+
+.hero-gold-btn:hover {
+  background: #f5c542 !important;
+}
+
+/* --- TUCK PIP IN BED WORKBENCH --- */
+.tuck-pip-window {
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+.tuck-pip-body {
+  padding: 24px;
+  background: var(--win-bg);
+}
+
+.tuck-intro-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tuck-badge-pill {
+  display: inline-block;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+  color: #fff;
+  font-family: var(--font-retro);
+  font-size: 0.72rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 6px rgba(139, 92, 246, 0.3);
+}
+
+.tuck-h3 {
+  font-size: 1.6rem;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+}
+
+.tuck-sub {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Hammock Stage Box */
+.hammock-stage-box {
+  position: relative;
+  background: linear-gradient(180deg, #09091c 0%, #151736 60%, #1e1b4b 100%);
+  border: 3px solid;
+  border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+  border-radius: 8px;
+  padding: 30px 20px;
+  min-height: 340px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7);
+  transition: all 0.5s ease;
+}
+
+.hammock-stage-box.is-asleep-mode {
+  background: linear-gradient(180deg, #050510 0%, #0d0f26 60%, #131433 100%);
+}
+
+.hammock-stage-box.is-silence-alarm {
+  border-color: #ef4444;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.5), inset 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Starlight Background */
+.stage-starlight-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.star-twinkle {
+  position: absolute;
+  font-size: 1rem;
+  animation: starTwinkle 2.5s infinite ease-in-out;
+}
+
+.star-twinkle.s1 { top: 18%; left: 14%; animation-delay: 0s; font-size: 1.4rem; }
+.star-twinkle.s2 { top: 22%; right: 16%; animation-delay: 0.8s; font-size: 1.2rem; }
+.star-twinkle.s3 { top: 55%; left: 22%; animation-delay: 1.4s; font-size: 0.9rem; }
+.star-twinkle.s4 { top: 62%; right: 24%; animation-delay: 1.9s; font-size: 1.1rem; }
+
+@keyframes starTwinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.cloud-drift {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.3;
+}
+
+.cloud-drift.c1 { top: 12%; left: 35%; animation: cloudDrift 14s infinite linear alternate; }
+.cloud-drift.c2 { top: 38%; right: 10%; animation: cloudDrift 18s infinite linear alternate-reverse; }
+
+@keyframes cloudDrift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(30px); }
+}
+
+/* Pip Bed Speech Bubble */
+.pip-bed-speech-bubble {
+  position: relative;
+  background: #ffffff;
+  color: #1e1b4b;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  border: 2px solid var(--accent-lavender);
+  z-index: 5;
+}
+
+.pip-bed-speech-bubble .bubble-tail {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #ffffff;
+}
+
+/* Cradle & Hammock Structure */
+.cradle-and-pip-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 380px;
+  max-width: 100%;
+  z-index: 2;
+}
+
+.cradle-wood-post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #78350f;
+  width: 16px;
+  height: 160px;
+  border-radius: 8px;
+  border: 2px solid #b45309;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.post-moon {
+  position: absolute;
+  top: -24px;
+  font-size: 1.5rem;
+}
+
+.hammock-cloth {
+  position: relative;
+  flex: 1;
+  background: #312e81;
+  border-radius: 0 0 100px 100px;
+  min-height: 130px;
+  border-bottom: 6px solid #4338ca;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 14px;
+  overflow: hidden;
+  box-shadow: inset 0 -6px 14px rgba(0, 0, 0, 0.4);
+  animation: hammockSway 5s infinite ease-in-out;
+}
+
+@keyframes hammockSway {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}
+
+/* Pip Bed Character */
+.pip-bed-character {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 6px;
+  z-index: 3;
+}
+
+.pip-bed-character.breathing-sleep {
+  animation: sleepBreath 3.5s infinite ease-in-out;
+}
+
+@keyframes sleepBreath {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-4px) scale(1.02); }
+}
+
+/* Bed Nightcap */
+.bed-nightcap {
+  position: relative;
+  width: 50px;
+  height: 25px;
+  margin-bottom: -4px;
+}
+
+.nightcap-cone {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 30px solid #ec4899;
+  transform: rotate(-15deg);
+}
+
+.nightcap-pom {
+  position: absolute;
+  top: -8px;
+  right: 6px;
+  font-size: 0.9rem;
+  color: #ffd875;
+}
+
+/* Bed Skull Face */
+.bed-skull-face {
+  position: relative;
+  width: 80px;
+  height: 72px;
+  background: #fdfbf7;
+  border-radius: 40px 40px 36px 36px;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bed-eye-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.bed-eye {
+  width: 18px;
+  height: 18px;
+  background: #0f172a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #ffd875;
+}
+
+.bed-eye.eye-closed-sleeping {
+  background: transparent;
+  color: #334155;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.bed-eye.eye-alarmed {
+  background: #7f1d1d;
+  color: #fca5a5;
+  font-size: 1rem;
+}
+
+.bed-eye.eye-awake .pupil-pinprick {
+  width: 4px;
+  height: 4px;
+  background: #67e8f9;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #67e8f9;
+}
+
+.bed-smile {
+  font-size: 1.2rem;
+  color: #334155;
+  margin-top: 2px;
+  line-height: 1;
+}
+
+.bed-cheek {
+  position: absolute;
+  bottom: 18px;
+  width: 12px;
+  height: 8px;
+  background: #fda4af;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.bed-cheek.cheek-l { left: 8px; }
+.bed-cheek.cheek-r { right: 8px; }
+
+/* Accessories */
+.bed-accessory {
+  position: absolute;
+  font-size: 1.6rem;
+  z-index: 4;
+}
+
+.teddy-in-bed {
+  right: -24px;
+  bottom: 0px;
+  transform: rotate(15deg);
+}
+
+.cocoa-on-nightstand {
+  left: -26px;
+  bottom: -2px;
+}
+
+/* Floating Sleep Zzzs */
+.sleep-floating-zzzs {
+  position: absolute;
+  top: -30px;
+  right: -20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.zzz {
+  font-family: var(--font-retro);
+  font-weight: bold;
+  color: #ffd875;
+  opacity: 0;
+  animation: riseZzz 3s infinite ease-out;
+}
+
+.zzz.z1 { font-size: 0.8rem; animation-delay: 0s; }
+.zzz.z2 { font-size: 1.1rem; animation-delay: 1s; }
+.zzz.z3 { font-size: 1.4rem; animation-delay: 2s; }
+
+@keyframes riseZzz {
+  0% { opacity: 0; transform: translate(0, 10px) scale(0.6); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: translate(20px, -30px) scale(1.3); }
+}
+
+/* Blanket Layer */
+.star-blanket-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(180deg, #6366f1 0%, #4338ca 100%);
+  border-top: 3px solid #a5b4fc;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  z-index: 6;
+}
+
+.star-blanket-layer.pulled-up {
+  height: 95px;
+}
+
+.blanket-pattern {
+  display: flex;
+  gap: 20px;
+  color: #ffd875;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Silence Alert Banner */
+.silence-alert-banner {
+  margin-top: 18px;
+  background: #7f1d1d;
+  color: #fecaca;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid #ef4444;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: pulseAlarm 1.5s infinite;
+}
+
+@keyframes pulseAlarm {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Sleepiness Meter Panel */
+.sleepiness-meter-panel {
+  margin: 20px 0 16px;
+}
+
+.meter-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-retro);
+  font-size: 0.78rem;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+}
+
+.meter-track-win95 {
+  background: #11142e;
+  border: 2px solid;
+  border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+  height: 22px;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.meter-fill-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  transition: width 0.5s ease;
+}
+
+.meter-fill-bar.meter-asleep {
+  background: linear-gradient(90deg, #10b981, #6ee7b7, #ffd875);
+}
+
+/* Bedtime Care Buttons */
+.bedtime-action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.care-btn {
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.care-btn.btn-done {
+  background: #1e3a2b;
+  color: #6ee7b7;
+  border-color: #059669;
+}
+
+/* Reward Card */
+.tuck-reward-card {
+  margin-top: 20px;
+  background: #172554;
+  border: 2px solid #f59e0b;
+  border-radius: 8px;
+  padding: 18px;
+  text-align: center;
+  animation: rewardGlow 2s infinite alternate;
+}
+
+@keyframes rewardGlow {
+  0% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); }
+  100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.7); }
+}
+
+.reward-badge {
+  font-family: var(--font-retro);
+  font-size: 0.85rem;
+  color: #ffd875;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.reward-text {
+  font-size: 0.92rem;
+  color: #bfdbfe;
+  margin-bottom: 14px;
+}
+
+.reward-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.reward-ticket-btn {
+  background: #d97706 !important;
+  color: #fff !important;
+  font-weight: bold;
+}
+
+.reward-reset-btn {
+  background: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+
+/* --- GOLDEN DREAM TICKET GENERATOR --- */
+.golden-ticket-window {
+  margin: 0 auto;
+  max-width: 960px;
+}
+
+.golden-ticket-body {
+  padding: 24px;
+  background: var(--win-bg);
+}
+
+.ticket-header-box {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ticket-special-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #f59e0b, #d97706);
+  color: #111;
+  font-family: var(--font-retro);
+  font-size: 0.72rem;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 999px;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);
+}
+
+.ticket-title {
+  font-size: 1.6rem;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+}
+
+.ticket-subtitle {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Form Grid */
+.ticket-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+  background: #11142e;
+  border: 2px solid;
+  border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+  padding: 16px;
+  border-radius: 4px;
+}
+
+.ticket-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ticket-label {
+  font-family: var(--font-retro);
+  font-size: 0.72rem;
+  color: #ffd875;
+}
+
+.ticket-text-input,
+.ticket-select {
+  padding: 8px 10px;
+  background: #1e244d;
+  color: #fff;
+  border: 2px solid #3b4580;
+  font-size: 0.88rem;
+  border-radius: 4px;
+}
+
+.ticket-text-input:focus,
+.ticket-select:focus {
+  border-color: #ffd875;
+  outline: none;
+}
+
+/* Ticket Preview Card */
+.golden-ticket-preview-card {
+  position: relative;
+  display: flex;
+  background: linear-gradient(135deg, #130f30 0%, #1e1948 50%, #291b48 100%);
+  border: 4px solid #f5c542;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(245, 197, 66, 0.3);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.ticket-foil-sheen {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(-25deg);
+  animation: foilSheen 6s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes foilSheen {
+  0% { left: -100%; }
+  30%, 100% { left: 200%; }
+}
+
+.preview-ticket-main {
+  flex: 3;
+  padding: 24px;
+  position: relative;
+}
+
+.preview-top-line {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-retro);
+  font-size: 0.72rem;
+  color: #ffd875;
+  margin-bottom: 12px;
+}
+
+.preview-ticket-h4 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0 0 4px;
+  letter-spacing: 1px;
+}
+
+.preview-motto {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: #c4b5fd;
+  margin: 0 0 16px;
+}
+
+.preview-data-row {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 14px;
+}
+
+.preview-data-row.secondary {
+  margin-bottom: 18px;
+}
+
+.data-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.data-lbl {
+  font-family: var(--font-retro);
+  font-size: 0.65rem;
+  color: #ffd875;
+  margin-bottom: 2px;
+}
+
+.data-val {
+  font-size: 0.95rem;
+  color: #e2e8f0;
+}
+
+.data-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.data-class {
+  color: #fde68a;
+  font-weight: 500;
+}
+
+/* Wax Seal */
+.preview-wax-seal {
+  position: absolute;
+  top: 36px;
+  right: 24px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 3px dashed #f59e0b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+  font-size: 1.5rem;
+}
+
+.preview-wax-seal small {
+  font-family: var(--font-retro);
+  font-size: 0.55rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.preview-wax-seal.stamped-anim {
+  animation: stampPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes stampPop {
+  0% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Barcode */
+.preview-barcode {
+  border-top: 1px dashed rgba(245, 197, 66, 0.3);
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-retro);
+  font-size: 0.62rem;
+  color: #a5b4fc;
+}
+
+.barcode-bars {
+  width: 140px;
+  height: 24px;
+  background: repeating-linear-gradient(90deg, #fff 0, #fff 2px, transparent 2px, transparent 4px, #fff 4px, #fff 7px, transparent 7px, transparent 9px);
+}
+
+/* Perforation Divider */
+.preview-ticket-perforation {
+  width: 2px;
+  background: repeating-linear-gradient(180deg, transparent 0, transparent 6px, #ffd875 6px, #ffd875 14px);
+  position: relative;
+}
+
+.preview-ticket-perforation::before,
+.preview-ticket-perforation::after {
+  content: '';
+  position: absolute;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  background: var(--win-bg);
+  border-radius: 50%;
+}
+
+.preview-ticket-perforation::before { top: -8px; }
+.preview-ticket-perforation::after { bottom: -8px; }
+
+/* Stub */
+.preview-ticket-stub {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.stub-header {
+  font-family: var(--font-retro);
+  font-size: 0.68rem;
+  color: #ffd875;
+  margin-bottom: 6px;
+}
+
+.stub-name {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.stub-info {
+  font-size: 0.72rem;
+  color: #c4b5fd;
+  margin-bottom: 6px;
+}
+
+.stub-id {
+  font-family: var(--font-retro);
+  font-size: 0.65rem;
+  color: #fde68a;
+  margin-bottom: 8px;
+}
+
+.stub-star-seal {
+  font-size: 1.8rem;
+}
+
+/* Download Bar */
+.ticket-actions-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.download-ticket-btn {
+  background: linear-gradient(180deg, #f59e0b 0%, #b45309 100%) !important;
+  color: #ffffff !important;
+  font-size: 1rem;
+  padding: 12px 28px;
+  font-weight: bold;
+  border-color: #ffd875 #78350f #78350f #ffd875 !important;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+}
+
+.download-ticket-btn:hover {
+  background: linear-gradient(180deg, #fbbf24 0%, #d97706 100%) !important;
+  transform: translateY(-2px);
+}
+
+.ticket-success-message {
+  background: #064e3b;
+  color: #6ee7b7;
+  border: 1px solid #10b981;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 768px) {
+  .golden-ticket-preview-card {
+    flex-direction: column;
+  }
+  .preview-ticket-perforation {
+    width: 100%;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 6px, #ffd875 6px, #ffd875 14px);
+  }
+  .preview-ticket-perforation::before { top: -8px; left: -8px; }
+  .preview-ticket-perforation::after { bottom: -8px; right: -8px; left: auto; }
+}

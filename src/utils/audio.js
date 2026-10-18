@@ -232,6 +232,114 @@ class AudioManager {
     }, 600);
   }
 
+  // --- HACKATHON WINNER SOUND SUITE: TUCK-IN & TICKET STAMP ---
+  playTuckInSound() {
+    if (this.isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+    const now = this.ctx.currentTime;
+
+    // Soft blanket rustle + soothing harmony
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(329.63, now); // E4
+    osc.frequency.exponentialRampToValueAtTime(523.25, now + 0.35); // C5
+
+    gain.gain.setValueAtTime(0.001, now);
+    gain.gain.linearRampToValueAtTime(0.18, now + 0.08);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
+
+    osc.connect(gain);
+    gain.connect(this.masterGain);
+    osc.start(now);
+    osc.stop(now + 0.65);
+
+    setTimeout(() => {
+      this.playChime('G5', 'glass', 1.2);
+    }, 250);
+  }
+
+  playSipCocoaSound() {
+    if (this.isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+    const now = this.ctx.currentTime;
+
+    // Cozy warm sip bubble
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(580, now);
+    osc.frequency.exponentialRampToValueAtTime(260, now + 0.12);
+
+    gain.gain.setValueAtTime(0.2, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
+
+    osc.connect(gain);
+    gain.connect(this.masterGain);
+    osc.start(now);
+    osc.stop(now + 0.15);
+
+    setTimeout(() => {
+      this.playChime('E5', 'musicBox', 0.8);
+    }, 150);
+  }
+
+  playSnoreSound() {
+    if (this.isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+    const now = this.ctx.currentTime;
+
+    // Gentle baby sleep breathing (smooth low sine whistle)
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(120, now);
+    osc.frequency.linearRampToValueAtTime(145, now + 0.6);
+    osc.frequency.linearRampToValueAtTime(105, now + 1.2);
+
+    gain.gain.setValueAtTime(0.001, now);
+    gain.gain.linearRampToValueAtTime(0.08, now + 0.5);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 1.3);
+
+    osc.connect(gain);
+    gain.connect(this.masterGain);
+    osc.start(now);
+    osc.stop(now + 1.35);
+  }
+
+  playTicketStampSound() {
+    if (this.isMuted) return;
+    this.init();
+    if (!this.ctx) return;
+    const now = this.ctx.currentTime;
+
+    // Rubber stamp mechanical thud
+    const oscThud = this.ctx.createOscillator();
+    const gainThud = this.ctx.createGain();
+    oscThud.type = 'sine';
+    oscThud.frequency.setValueAtTime(140, now);
+    oscThud.frequency.exponentialRampToValueAtTime(45, now + 0.12);
+
+    gainThud.gain.setValueAtTime(0.35, now);
+    gainThud.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+
+    oscThud.connect(gainThud);
+    gainThud.connect(this.masterGain);
+    oscThud.start(now);
+    oscThud.stop(now + 0.16);
+
+    // Followed by golden bell cascade
+    setTimeout(() => {
+      this.playChime('C5', 'glass', 0.8);
+      setTimeout(() => this.playChime('E5', 'glass', 0.9), 80);
+      setTimeout(() => this.playChime('G5', 'glass', 1.0), 160);
+      setTimeout(() => this.playChime('C6', 'harp', 1.4), 240);
+    }, 120);
+  }
+
   // --- AMBIENT ANTI-SILENCE SLEEP GENERATOR ---
   // Pip hates silence, so he built soothing ambient sound loops
   initAmbient() {

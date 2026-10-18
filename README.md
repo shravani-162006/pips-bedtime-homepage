@@ -52,6 +52,8 @@ flowchart TD
             Storybook["📖 Bedtime Storybook (Page-Turn Animation)"]
             Alchemy["🧪 Dream Alchemy Lab (Ingredient Mixer)"]
             SleepMachine["📻 Anti-Silence Sleep Synthesizer"]
+            TuckBed["🛌 Star Hammock Care (Tuck Pip In Mini-Toy)"]
+            GoldTicket["🎟️ Golden Dream Ticket (2x Canvas Exporter)"]
         end
 
         subgraph AudioCore["🔊 Audio Engine (audio.js)"]
@@ -124,6 +126,18 @@ sequenceDiagram
     UI->>Audio: Play bubbling potion synth sequence
     UI->>Store: Save crafted recipe to user dream ledger
     
+    Visitor->>UI: Tucks Pip In (Cocoa + Teddy + Blanket + Music Box)
+    UI->>Audio: Play warm sip bubble & blanket chimes
+    alt Silence Warning (Room Muted)
+        UI-->>Visitor: Displays canon warning ("Pip hates silence! Turn on sound!")
+    else Sound Active
+        UI-->>Visitor: Pip reaches 100% sleepiness & awards Master Slumber Ribbon
+    end
+
+    Visitor->>UI: Clicks "Download Golden Bedtime Ticket"
+    UI->>Audio: Play mechanical rubber stamp thud & golden bell cascade
+    UI-->>Visitor: Direct download of high-resolution 2x souvenir PNG
+
     Visitor->>UI: Signs Guestbook with a bedtime wish
     UI->>Store: POST /api/guestbook
     alt Upstash Redis Available
@@ -184,6 +198,8 @@ flowchart LR
 | **📖 Bedtime Storybook** | 3D CSS Transforms | *Origins lore* | *"The Boy Who Lost His Yawn"* with realistic page-turning, arrow keys, and touch swipe. |
 | **🧪 Dream Alchemy Lab** | Reactive State + Audio Synth | *Dream formulation* | 8 starlight ingredients to brew custom recipes; saves dream ledger locally. |
 | **📻 Anti-Silence Machine** | Procedural Noise + Audio Filters | *Core character quirk* | Procedural rainfall, wind gusts, and star drones with volume mixing. |
+| **🛌 Tuck Pip Into Bed** | Interactive Virtual Pet Care + Audio | *Bedtime care protocol* | Feed warm cocoa, tuck Barnaby the Bear, pull starry cloud blanket, with silence detection alarm! |
+| **🎟️ Golden Dream Ticket** | HTML5 Canvas (2x Retina Export) | *Official nursery pass* | Generates and downloads a high-resolution 2x souvenir boarding pass PNG with wax stamp and barcode. |
 | **🔦 Dream Flashlight** | Dynamic Radial Mask | *Secret night nursery* | Uncovers hidden nursery stickers and constellations across the dark canvas. |
 | **💌 Slumber Registry** | Serverless + Redis REST | *Community wishes* | Full-stack guestbook with rate-limiting and offline localStorage fallback. |
 
@@ -207,6 +223,7 @@ pips-bedtime-homepage/
 │   │   ├── DreamAlchemyLab.jsx      # Dream potion crafting workshop
 │   │   ├── DreamFlashlight.jsx      # Dark mode spotlight mask
 │   │   ├── DreamGuestbook.jsx       # Slumber registry community board
+│   │   ├── GoldenDreamTicket.jsx    # 2x Retina canvas golden ticket generator & PNG exporter
 │   │   ├── HitCounter.jsx           # 6-digit mechanical roll-over odometer
 │   │   ├── PipAvatar.jsx            # Cursor-tracking vector character
 │   │   ├── PipBioWindow.jsx         # Windows 98 personnel dossier
@@ -215,6 +232,7 @@ pips-bedtime-homepage/
 │   │   ├── SecretMoonEasterEgg.jsx  # 3-click crescent moon listener
 │   │   ├── SparkleTrail.jsx         # Accessible stardust cursor trail
 │   │   ├── StoryScenes.jsx          # 5-act illustrated origin chronicle
+│   │   ├── TuckPipInBed.jsx         # Virtual bedtime care hammock mini-toy
 │   │   └── projects/
 │   │       ├── BedtimeStorybook.jsx # Interactive picture book
 │   │       ├── DreamDeliveryRoutes.jsx # SVG flight map & autopilot
